@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/Aiims-uploads/0bc8375c-bedb-415d-be0f-9cd2512a7f8b.png')",
+            backgroundImage: "url('/lovable-uploads/0bc8375c-bedb-415d-be0f-9cd2512a7f8b.png')",
             filter: 'blur(6px)',
             transform: 'scale(1.05)'
           }}

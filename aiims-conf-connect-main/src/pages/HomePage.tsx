@@ -160,7 +160,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/Aiims-uploads/a8b3ebdd-c1c9-4d8d-98c5-86355635b79d.png')",
+            backgroundImage: "url('/lovable-uploads/a8b3ebdd-c1c9-4d8d-98c5-86355635b79d.png')",
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
@@ -214,7 +214,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 z-0"
           style={{
-            backgroundImage: "url('/Aiims-uploads/a8b3ebdd-c1c9-4d8d-98c5-86355635b79d.png')",
+            backgroundImage: "url('/lovable-uploads/a8b3ebdd-c1c9-4d8d-98c5-86355635b79d.png')",
             backgroundSize: "contain",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",

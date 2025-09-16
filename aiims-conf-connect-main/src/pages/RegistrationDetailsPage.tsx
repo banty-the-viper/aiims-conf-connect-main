@@ -139,7 +139,7 @@ export default function RegistrationDetailsPage() {
             </div>
             <div className="inline-block p-2 bg-white border-2 border-maroon-200 rounded-lg">
               <img
-                src="/Aiims-uploads/UPI.png"
+                src="/lovable-uploads/UPI.png"
                 alt="QR Code for Payment"
                 className="w-60 h-50 object-contain mx-auto"
               />
