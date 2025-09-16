@@ -33,22 +33,29 @@ export default function PreConferenceWorkshopPage() {
       title: "Neurodiagnostics in Action: Autonomic Testing Demystified",
       duration: "Forenoon",
       facilitators: "Dr Manisha Kar (Prof. & HOD AIIMS BBSR), Dr Jayanti Mishra (Prof. AIIMS BBSR)",
-      price: "Rs 2000/-"
+      price: "Rs 1000/-"
     },
     {
       id: 4,
       title: "Constructing inclusive student-centered learning sessions (ISCLS) in Physiology: through the lens of Universal Design aided by AI tools",
       duration: "Afternoon",
       facilitators: "Dr. Sarmishtha Ghosh (Professor, AIIMS Jodhpur), Dr. Prasunpriya Nayak (Prof. AIIMS Jodhpur)",
-      price: "Rs 2000/-"
+      price: "Rs 500/-"
     },
     {
       id: 5,
       title: "Comprehensive yoga workshop on 'From stillness to strength: Hatha yoga, Heartfulness and Inner Awareness'",
       duration: "Forenoon",
       facilitator: "Dr. Varun Malhotra (Additional Prof., AIIMS Bhopal)",
-      price: "Rs 2000/-"
-    }
+      price: "Rs 500/-"
+    },
+    {
+      id: 6,
+      title: "Polysomnography a gold standard diagnostic tool for sleep studies'",
+      duration: "Forenoon",
+      facilitator: "Dr Basanta Manjari Naik, Additional Professor, JIPMER,Puducherry",
+      price: "Rs 1000/-"
+    },
   ];
 
   return (
@@ -130,7 +137,7 @@ export default function PreConferenceWorkshopPage() {
         <div className="mt-12 bg-maroon-50 rounded-lg p-8 text-center">
           <div className="mt-6">
             <a
-              href="https://tinyurl.com/j9kkfjrk"
+              href="https://register.physicon2025.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
