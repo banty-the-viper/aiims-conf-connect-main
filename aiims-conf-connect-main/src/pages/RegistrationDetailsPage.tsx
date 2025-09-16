@@ -29,7 +29,7 @@ export default function RegistrationDetailsPage() {
 
   const handleGoogleRegistration = () => {
     // Replace this URL with the actual Google registration form URL
-    window.open("https://register.physicon2025.com/", "_blank");
+    window.open("https://tinyurl.com/j9kkfjrk", "_blank");
   };
 
   return (
@@ -156,7 +156,7 @@ export default function RegistrationDetailsPage() {
             size="lg"
           >
             <ExternalLink className="h-5 w-5 mr-2" />
-            Register Now
+            Register Now via Google Form
           </Button>
           <p className="text-sm text-gray-600 mt-2">
             Click above to open the Google registration form in a new tab
