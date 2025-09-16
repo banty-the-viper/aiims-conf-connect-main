@@ -153,7 +153,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
+      <marquee>Abstract submission last date has been extended to 30.09.25  and Early bird registration is extended till 15.10.25</marquee>         
+       
       {/* Welcome to PHYSICON 2025 section */}
       {/* <section className="py-20 overflow-hidden relative">
         <div
@@ -256,7 +257,7 @@ export default function HomePage() {
           <div className="max-w-4xl mx-auto"  style={{width:windowSize?.width < 800 ?"100%":"50%",marginTop:windowSize?.width < 800 ?39:0}}>
           <div className="max-w-4xl mx-auto md-w-2xl">
           
-          <img src="/PHYSICON 2025_CALL FOR ABSTRACT_page-0001.jpg" alt="Background" style={{width:"100%",height:"100%"}} />
+          <img src="/PHYSICON 2025_CALL FOR ABSTRACT final.png" alt="Background" style={{width:"100%",height:"100%"}} />
           </div>
           </div>
         </div>
