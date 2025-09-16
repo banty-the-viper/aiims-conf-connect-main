@@ -16,7 +16,7 @@ export default function PlacesPage() {
         "Lingaraja Temple is a Hindu temple dedicated to Shiva and is one of the oldest temples in Bhubaneswar, the capital of the Indian state of Odisha, India. The Lingaraja temple is the largest temple in Bhubaneswar.",
       distance: "12 km from venue",
       category: "Historical",
-      image: "/lovable-uploads/c45dede2-490a-45cb-9710-961fff571407.png",
+      image: "/Aiims-uploads/c45dede2-490a-45cb-9710-961fff571407.png",
       visitTime: "2-3 hours",
       rating: 4.8,
     },
