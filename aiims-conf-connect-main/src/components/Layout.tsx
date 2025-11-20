@@ -20,7 +20,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
-      <NotificationBox />
+      {/* <NotificationBox /> */}
     </div>
   );
 }

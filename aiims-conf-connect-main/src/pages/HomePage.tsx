@@ -4,6 +4,51 @@ import { CalendarCheck, UserPlus, Users, FileText, Plane, MapPin } from "lucide-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useEffect, useRef, useState } from "react";
+import { Bell, X, CheckCircle, AlertCircle, Info, Calendar } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+interface Notification {
+  id: string;
+  type: 'info' | 'success' | 'warning' | 'event';
+  title: string;
+  message: string;
+  time: string;
+  isRead: boolean;
+  link?: string;
+}
+
+const sampleNotifications: Notification[] = [
+  {
+    id: '1',
+    type: 'event',
+    title: 'Early Bird Registration Closed',
+    message: 'The Early Bird Registration period has ended. LATE REGISTRATION opens on 16.10.2025. Pre-Conference workshop registration is still open.',
+    time: '2 hours ago',
+    isRead: false,
+    link: '/registration-details'
+  },
+  {
+    id: '2',
+    type: 'event',
+    title: 'Abstract Submission Closed',
+    message: 'Abstract Submission for oral, poster and invited speaker categories have been closed.',
+    time: '2 hour ago',
+    isRead: false,
+    link: '/events'
+  }
+];
+
+const getIcon = (type: string) => {
+  switch (type) {
+    case 'success':
+      return <CheckCircle className="h-4 w-4 text-green-500" />;
+    case 'warning':
+      return <AlertCircle className="h-4 w-4 text-yellow-500" />;
+    case 'event':
+      return <Calendar className="h-4 w-4 text-maroon-600" />;
+    default:
+      return <Info className="h-4 w-4 text-blue-500" />;
+  }
+};
 
 export default function HomePage() {
 
@@ -11,7 +56,19 @@ export default function HomePage() {
     width: window.innerWidth,
     height: window.innerHeight
   });
-
+   const [notifications, setNotifications] = useState(sampleNotifications);
+  
+    const unreadCount = notifications.filter(n => !n.isRead).length;
+  
+    const markAsRead = (id: string) => {
+      setNotifications(prev =>
+        prev.map(notification =>
+          notification.id === id
+            ? { ...notification, isRead: true }
+            : notification
+        )
+      );
+    };
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({
@@ -117,20 +174,76 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
+            <div
+              className="mt-10 mb-12 animate-fade-up opacity-0"
+              style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
+            >
+              <div
+                className="px-8 py-4 rounded-md inline-block backdrop-blur-md relative"
+                style={{
+                  backgroundColor: "#fce4ec", // light pink
+                }}
+              >
+                <p className="text-lg md:text-3xl font-medium" style={{ color: "rgb(95, 21, 21)" }}>
+                  Pre-Conference workshop registration is open Now
+                </p>
+                <div className="absolute top-[-20px] right-[-20px]">
+                  <img src="/new.gif" style={{height:"60px",width:"60px"}} />
+                </div>
+              </div>
+              
+            </div>
+            <div
+              className="mt-10 mb-12 animate-fade-up opacity-0"
+              style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
+            >
+              <div
+                className="px-8 py-4 rounded-md inline-block backdrop-blur-md relative"
+                style={{
+                  backgroundColor: "#fce4ec", // light pink
+                }}
+              >
+                <p className="text-lg md:text-3xl font-medium" style={{ color: "rgb(95, 21, 21)" }}>
+                  Pre-Conference Workshop has been granted <span className="text-red-600"> 4 credit hours </span> by The Odisha Council of Medical Registration!
+                </p>
+                <div className="absolute top-[-20px] right-[-20px]">
+                  <img src="/new.gif" style={{height:"60px",width:"60px"}} />
+                </div>
+              </div>
+              
+            </div>
 
+             <div
+              className="mt-10 mb-12 animate-fade-up opacity-0"
+              style={{ animationDelay: "0.8s", animationFillMode: "forwards" }}
+            >
+              <div
+                className="px-8 py-4 rounded-md inline-block backdrop-blur-md relative"
+                style={{
+                  backgroundColor: "#fce4ec", // light pink
+                }}
+              >
+                <p className="text-lg md:text-3xl font-medium" style={{ color: "rgb(95, 21, 21)" }}>
+The 36th Annual conference of the Physiological Society of India,PHYSICON-2025 has been granted <span className="text-red-600"> 10 credit hours</span>  by The Odisha Council of Medical Registration!!                </p>
+                <div className="absolute top-[-20px] right-[-20px]">
+                  <img src="/new.gif" style={{height:"60px",width:"60px"}} />
+                </div>
+              </div>
+              
+            </div>
             {/* Conference dates with improved styling */}
             <div
-              className="bg-maroon-800/90 backdrop-blur-md text-white p-6 rounded-lg max-w-6xl mx-auto mb-12 animate-fade-up opacity-0 mt-20"
+              className="bg-maroon-800/90 backdrop-blur-md text-white p-6 max-w-[75rem] rounded-lg  mx-auto mb-12 animate-fade-up opacity-0 mt-20"
               style={{ animationDelay: "1s", animationFillMode: "forwards" }}
             >
               <p className="text-lg md:text-3xl whitespace-nowrap">
-                Pre-conference - 20<sup>th</sup> November | Conference - 21<sup>st</sup> November - 23<sup>rd</sup>{" "}
+                Pre-conference workshop- 20<sup>th</sup> November | Conference - 21<sup>st</sup> November - 23<sup>rd</sup>{" "}
                 November
               </p>
             </div>
 
             <div
-              className="flex flex-col sm:flex-row gap-4 justify-center mt-12 animate-fade-up opacity-0"
+              className="relative flex flex-col sm:flex-row gap-4 justify-center mt-12 animate-fade-up opacity-0"
               style={{ animationDelay: "1.2s", animationFillMode: "forwards" }}
             >
               <Link to="/registration-details">
@@ -143,17 +256,39 @@ export default function HomePage() {
               </Link>
               <Button
                 // onClick={scrollToExperience}
+                onClick={() => window.open("/preconf-workshop.pdf", "_blank")}
+                size="lg"
+                className="bg-maroon-700 text-white hover:bg-maroon-800 font-medium px-6 py-3 text-base sm:text-lg h-auto transition-transform hover:scale-105"
+              >
+                Pre Conference Workshop
+              </Button>
+              <Button
+                // onClick={scrollToExperience}
                 onClick={() => window.open("/PHYSICON_2025.pdf", "_blank")}
                 size="lg"
                 className="bg-maroon-700 text-white hover:bg-maroon-800 font-medium px-6 py-3 text-base sm:text-lg h-auto transition-transform hover:scale-105"
               >
                 Event Brochure
               </Button>
+              <div className="relative">
+          <Button
+                // onClick={scrollToExperience}
+                onClick={() => window.open("/Program PHYSICON 2025.pdf", "_blank")}
+                size="lg"
+                className="bg-maroon-700 text-white hover:bg-maroon-800 font-medium px-6 py-3 text-base sm:text-lg h-auto transition-transform hover:scale-105"
+              >
+                Program Details
+              </Button>
+              <div className="absolute top-[-15px] right-[1px]">
+                  <img src="/new.gif" style={{height:"40px",width:"40px"}} />
+                </div>
+              </div>
+              
             </div>
           </div>
         </div>
       </section>
-      <marquee>Abstract submission last date has been extended to 30.09.25  and Early bird registration is extended till 15.10.25</marquee>         
+              
        
       {/* Welcome to PHYSICON 2025 section */}
       {/* <section className="py-20 overflow-hidden relative">
@@ -251,13 +386,97 @@ export default function HomePage() {
                   Learn More About the Conference
                 </Button>
               </Link>
+              
             </div>
+            <div className="mt-10 flex justify-center scroll-fade-in opacity-0" style={{ transitionDelay: "0.8s" }}>
+              <Button
+                // onClick={scrollToExperience}
+                onClick={() => window.open("/POSTER_GUIDELINES.pdf", "_blank")}
+                size="lg"
+                className="bg-maroon-700 text-white hover:bg-maroon-800 font-medium px-6 py-3 text-base sm:text-lg h-auto transition-transform hover:scale-105"
+              >
+                POSTER GUIDELINES
+              </Button>
+              
+            </div>
+            
           </div>
 
           <div className="max-w-4xl mx-auto"  style={{width:windowSize?.width < 800 ?"100%":"50%",marginTop:windowSize?.width < 800 ?39:0}}>
           <div className="max-w-4xl mx-auto md-w-2xl">
-          
-          <img src="/PHYSICON 2025_CALL FOR ABSTRACT final.png" alt="Background" style={{width:"100%",height:"100%"}} />
+          <Card className="ml-2 w-full shadow-lg border-4 border-black bg-white">
+            <div className="p-4 border-b border-black-100">
+              <div className="flex items-center justify-between relative">
+                <h3 className="font-semibold text-maroon-800">Announcements</h3>
+                 <div className="absolute top-[-15px] left-[115px]">
+                  <img src="/new.gif" style={{height:"40px",width:"40px"}} />
+                </div>
+                <div className="flex items-center gap-2">
+                  {/* Optional Mark all read button */}
+                  {/* {unreadCount > 0 && (
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={markAllAsRead}
+                      className="text-xs text-maroon-600 hover:text-maroon-700"
+                    >
+                      Mark all read
+                    </Button>
+                  )} */}
+                  {/* <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => setIsOpen(false)}
+                    className="h-6 w-6 p-0"
+                  >
+                    <X className="h-4 w-4" />
+                  </Button> */}
+                </div>
+              </div>
+            </div>
+
+            <CardContent className="p-0 max-h-96 overflow-y-auto">
+              {notifications.length === 0 ? (
+                <div className="p-6 text-center text-gray-500">
+                  <Bell className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                  <p>No notifications</p>
+                </div>
+              ) : (
+                <div className="space-y-0">
+                  {notifications.map((notification) => (
+                    <Link
+                      key={notification.id}
+                      to={'#'}
+                      onClick={() => markAsRead(notification.id)}
+                      className={`block p-4 border-b border-gray-50 hover:bg-gray-50 transition-colors ${!notification.isRead ? 'bg-maroon-50/30' : ''
+                        }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="flex-shrink-0 mt-1">
+                          {getIcon(notification.type)}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="text-sm font-medium text-gray-900 truncate">
+                              {notification.title}
+                            </h4>
+                            {!notification.isRead && (
+                              <div className="w-2 h-2 bg-maroon-600 rounded-full flex-shrink-0"></div>
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 line-clamp-2 mb-1">
+                            {notification.message}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </CardContent>
+            
+          </Card>
+          {/* <img src="/PHYSICON 2025_CALL FOR ABSTRACT final.png" alt="Background" style={{width:"100%",height:"100%"}} /> */}
           </div>
           </div>
         </div>
